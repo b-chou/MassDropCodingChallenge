@@ -85,11 +85,12 @@ module.exports = {
 
   // returns the current queue
   getQueue: (req, res) => {
+    console.log('!!!');
+    res.header('Access-Control-Allow-Origin', '*');
     const jobList = [];
     storage.keys('*', (e, keys) => {
       keys.forEach(key => {
         if (key.match(/Job./)) {
-          console.log(key);
           storage.get(key, (err, url) => {
             jobList.push([key, url]);
           });
