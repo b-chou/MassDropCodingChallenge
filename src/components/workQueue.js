@@ -14,7 +14,7 @@ class WorkQueue extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
-    fetch('http://localhost:3000/queue')
+    fetch('http://198.199.101.94:3000/queue')
       .then(response => response.json())
         .then(responseData => {
           this.setState({
@@ -33,7 +33,7 @@ class WorkQueue extends Component {
   handleSubmit() {
     const regexUrl = /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
     if (this.state.value.match(regexUrl)) {
-      fetch('http://localhost:3000/archive', {
+      fetch('http://198.199.101.94:3000/archive', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
