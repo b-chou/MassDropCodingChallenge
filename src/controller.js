@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 const workQueue = [];
+const path = require('path');
 const request = require('request');
 const storage = require('./database/redis');
 // base worker interval 5 seconds
@@ -112,5 +113,10 @@ module.exports = {
     } else {
       res.send('No ms property sent in body.');
     }
+  },
+
+  // serves the landing html page
+  serveLanding: (req, res) => {
+    res.sendFile(path.resolve(__dirname, './index.html'));
   },
 };

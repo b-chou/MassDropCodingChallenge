@@ -4,7 +4,7 @@ Deployed endpoint at: 198.199.101.94:3000
 
 # Actions
 
-To add an website to the worker's queue:
+To add a website to the worker's queue:
 
   curl --data "url=www.google.com" http://198.199.101.94:3000/archive
   Endpoint: 198.199.101.94:3000/archive

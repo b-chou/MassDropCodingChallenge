@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "nodemon src/server.js",
-    "build": "babel src -d dev"
+    "build": "babel src -d dev",
+    "watch-client": "webpack --watch --progress"
   },
   "repository": {
     "type": "git",
@@ -30,8 +31,12 @@
     "eslint-plugin-jsx-a11y": "^1.5.5",
     "express": "^4.14.0",
     "nodemon": "^1.10.0",
+    "path": "^0.12.7",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
     "redis": "^2.6.2",
-    "request": "^2.74.0"
+    "request": "^2.74.0",
+    "webpack": "^1.13.1"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",

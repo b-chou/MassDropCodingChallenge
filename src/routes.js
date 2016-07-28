@@ -7,6 +7,6 @@ module.exports = app => {
   app.post('/archive', controller.queueSite);
   // wildcard informational routes or change worker interval
   app.route('/*')
-    .get(controller.getQueue)
+    .get(controller.serveLanding)
     .post(controller.changeSchedule);
 };
