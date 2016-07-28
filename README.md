@@ -27,7 +27,7 @@ To access a website based off of job number
 
 View Queue and Existing Job Table and associated URL: 
 
-    curl http://198.199.101.94:3000
+    curl http://198.199.101.94:3000/queue
 
 Change Worker Interval:
 
