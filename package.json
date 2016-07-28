@@ -20,14 +20,17 @@
   },
   "homepage": "https://github.com/b-chou/MassDropCodingChallenge#readme",
   "dependencies": {
+    "bluebird": "^3.4.1",
     "body-parser": "^1.15.2",
     "eslint": "^3.1.1",
     "eslint-plugin-import": "^1.12.0",
     "eslint-plugin-jsx-a11y": "^1.5.5",
     "express": "^4.14.0",
+    "node-cron": "^1.1.1",
     "node-fetch": "^1.5.3",
     "nodemon": "^1.10.0",
     "queue": "^4.0.0",
+    "redis": "^2.6.2",
     "request": "^2.74.0"
   },
   "devDependencies": {
