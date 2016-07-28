@@ -4,8 +4,8 @@
   "description": "Coding challenge for Massdrop",
   "main": "server.js",
   "scripts": {
-    "test": "nodemon src/server.js",
-    "build": "babel src -d dev",
+    "test": "nodemon src/server/server.js",
+    "build": "babel src/server -d dev",
     "watch-client": "webpack --watch --progress"
   },
   "repository": {
@@ -31,7 +31,6 @@
     "eslint-plugin-jsx-a11y": "^1.5.5",
     "express": "^4.14.0",
     "isomorphic-fetch": "^2.2.1",
-    "node-fetch": "^1.5.3",
     "nodemon": "^1.10.0",
     "path": "^0.12.7",
     "react": "^15.2.1",

@@ -59,7 +59,7 @@
 
 	var _reactDom = __webpack_require__(34);
 
-	var _App = __webpack_require__(175);
+	var _App = __webpack_require__(173);
 
 	var _App2 = _interopRequireDefault(_App);
 
@@ -21103,7 +21103,7 @@
 /* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -21113,102 +21113,26 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _workQueue = __webpack_require__(174);
+
+	var _workQueue2 = _interopRequireDefault(_workQueue);
+
+	var _instructions = __webpack_require__(177);
+
+	var _instructions2 = _interopRequireDefault(_instructions);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Instructions = function Instructions() {
+	var App = function App() {
 	  return _react2.default.createElement(
-	    "div",
-	    { id: "instructions" },
-	    _react2.default.createElement(
-	      "h1",
-	      null,
-	      " Massdrop Coding Challenge "
-	    ),
-	    _react2.default.createElement(
-	      "p",
-	      null,
-	      " Deployed enpoint at: 198.199.101.94:3000 "
-	    ),
-	    _react2.default.createElement(
-	      "h2",
-	      null,
-	      " Actions "
-	    ),
-	    _react2.default.createElement(
-	      "h3",
-	      null,
-	      " To add a website to the worker's queue: "
-	    ),
-	    _react2.default.createElement(
-	      "p",
-	      null,
-	      " curl --data \"url=www.google.com\" http://198.199.101.94:3000/archive"
-	    ),
-	    _react2.default.createElement(
-	      "p",
-	      null,
-	      " or "
-	    ),
-	    _react2.default.createElement(
-	      "p",
-	      null,
-	      " Input URL into input field to the right and press submit. "
-	    ),
-	    _react2.default.createElement(
-	      "h3",
-	      null,
-	      " To access a website based off of job number: "
-	    ),
-	    _react2.default.createElement(
-	      "p",
-	      null,
-	      " Example Job #1: "
-	    ),
-	    _react2.default.createElement(
-	      "p",
-	      null,
-	      " curl http://198.199.101.94:3000/1 "
-	    ),
-	    _react2.default.createElement(
-	      "p",
-	      null,
-	      " or "
-	    ),
-	    _react2.default.createElement(
-	      "p",
-	      null,
-	      " Click the Job Number on the Job Mapping Table to the right "
-	    ),
-	    _react2.default.createElement(
-	      "h3",
-	      null,
-	      " View Queue and Existing Job Table and associated URL: "
-	    ),
-	    _react2.default.createElement(
-	      "p",
-	      null,
-	      " curl http://198.199.101.94:3000 "
-	    ),
-	    _react2.default.createElement(
-	      "h3",
-	      null,
-	      " Change Worker Interval: "
-	    ),
-	    _react2.default.createElement(
-	      "p",
-	      null,
-	      " Example Change Interval to 1 Minute: "
-	    ),
-	    _react2.default.createElement(
-	      "p",
-	      null,
-	      " curl --data \"ms=60000\" http://198.199.101.94:3000 "
-	    )
+	    'div',
+	    null,
+	    _react2.default.createElement(_workQueue2.default, null),
+	    _react2.default.createElement(_instructions2.default, null)
 	  );
-	}; /* eslint-disable max-len */
+	};
 
-
-	exports.default = Instructions;
+	exports.default = App;
 
 /***/ },
 /* 174 */
@@ -21226,7 +21150,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _isomorphicFetch = __webpack_require__(176);
+	var _isomorphicFetch = __webpack_require__(175);
 
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 
@@ -21262,7 +21186,7 @@
 	    value: function componentDidMount() {
 	      var _this2 = this;
 
-	      (0, _isomorphicFetch2.default)('http://localhost:3000/queue').then(function (response) {
+	      (0, _isomorphicFetch2.default)('http://198.199.101.94:3000/queue').then(function (response) {
 	        return response.json();
 	      }).then(function (responseData) {
 	        _this2.setState({
@@ -21285,7 +21209,7 @@
 
 	      var regexUrl = /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
 	      if (this.state.value.match(regexUrl)) {
-	        (0, _isomorphicFetch2.default)('http://localhost:3000/archive', {
+	        (0, _isomorphicFetch2.default)('http://198.199.101.94:3000/archive', {
 	          method: 'POST',
 	          headers: {
 	            Accept: 'application/json',
@@ -21386,51 +21310,16 @@
 /* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _workQueue = __webpack_require__(174);
-
-	var _workQueue2 = _interopRequireDefault(_workQueue);
-
-	var _instructions = __webpack_require__(173);
-
-	var _instructions2 = _interopRequireDefault(_instructions);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var App = function App() {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(_workQueue2.default, null),
-	    _react2.default.createElement(_instructions2.default, null)
-	  );
-	};
-
-	exports.default = App;
-
-/***/ },
-/* 176 */
-/***/ function(module, exports, __webpack_require__) {
-
 	// the whatwg-fetch polyfill installs the fetch() function
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(177);
+	__webpack_require__(176);
 	module.exports = self.fetch.bind(self);
 
 
 /***/ },
-/* 177 */
+/* 176 */
 /***/ function(module, exports) {
 
 	(function(self) {
@@ -21867,6 +21756,117 @@
 	  self.fetch.polyfill = true
 	})(typeof self !== 'undefined' ? self : this);
 
+
+/***/ },
+/* 177 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Instructions = function Instructions() {
+	  return _react2.default.createElement(
+	    "div",
+	    { id: "instructions" },
+	    _react2.default.createElement(
+	      "h1",
+	      null,
+	      " Massdrop Coding Challenge "
+	    ),
+	    _react2.default.createElement(
+	      "p",
+	      null,
+	      " Deployed enpoint at: 198.199.101.94:3000 "
+	    ),
+	    _react2.default.createElement(
+	      "h2",
+	      null,
+	      " Actions "
+	    ),
+	    _react2.default.createElement(
+	      "h3",
+	      null,
+	      " To add a website to the worker's queue: "
+	    ),
+	    _react2.default.createElement(
+	      "p",
+	      null,
+	      " curl --data \"url=www.google.com\" http://198.199.101.94:3000/archive"
+	    ),
+	    _react2.default.createElement(
+	      "p",
+	      null,
+	      " or "
+	    ),
+	    _react2.default.createElement(
+	      "p",
+	      null,
+	      " Input URL into input field to the right and press submit. "
+	    ),
+	    _react2.default.createElement(
+	      "h3",
+	      null,
+	      " To access a website based off of job number: "
+	    ),
+	    _react2.default.createElement(
+	      "p",
+	      null,
+	      " Example Job #1: "
+	    ),
+	    _react2.default.createElement(
+	      "p",
+	      null,
+	      " curl http://198.199.101.94:3000/1 "
+	    ),
+	    _react2.default.createElement(
+	      "p",
+	      null,
+	      " or "
+	    ),
+	    _react2.default.createElement(
+	      "p",
+	      null,
+	      " Click the Job Number on the Job Mapping Table to the right "
+	    ),
+	    _react2.default.createElement(
+	      "h3",
+	      null,
+	      " View Queue and Existing Job Table and associated URL: "
+	    ),
+	    _react2.default.createElement(
+	      "p",
+	      null,
+	      " curl http://198.199.101.94:3000 "
+	    ),
+	    _react2.default.createElement(
+	      "h3",
+	      null,
+	      " Change Worker Interval: "
+	    ),
+	    _react2.default.createElement(
+	      "p",
+	      null,
+	      " Example Change Interval to 1 Minute: "
+	    ),
+	    _react2.default.createElement(
+	      "p",
+	      null,
+	      " curl --data \"ms=60000\" http://198.199.101.94:3000 "
+	    )
+	  );
+	}; /* eslint-disable max-len */
+
+
+	exports.default = Instructions;
 
 /***/ }
 /******/ ]);

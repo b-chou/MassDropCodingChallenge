@@ -2,8 +2,9 @@
 
 /* eslint-disable max-len */
 var workQueue = [];
+var path = require('path');
 var request = require('request');
-var storage = require('./database/redis');
+var storage = require('../database/redis');
 // base worker interval 5 seconds
 var workerInterval = 5000;
 
@@ -88,11 +89,12 @@ module.exports = {
 
   // returns the current queue
   getQueue: function getQueue(req, res) {
+    console.log('!!!');
+    res.header('Access-Control-Allow-Origin', '*');
     var jobList = [];
     storage.keys('*', function (e, keys) {
       keys.forEach(function (key) {
         if (key.match(/Job./)) {
-          console.log(key);
           storage.get(key, function (err, url) {
             jobList.push([key, url]);
           });
@@ -118,5 +120,10 @@ module.exports = {
     } else {
       res.send('No ms property sent in body.');
     }
+  },
+
+  // serves the landing html page
+  serveLanding: function serveLanding(req, res) {
+    res.sendFile(path.resolve(__dirname, './index.html'));
   }
 };
