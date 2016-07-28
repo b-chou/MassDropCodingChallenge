@@ -6,8 +6,8 @@ Navigate to 198.199.101.94:3000 for a UI and additional instructions
 # Build Process
 
     1. npm install
-    2. npm run build (transpiles server files from ES6 to ES5)
-    3. npm watch-client (webpacks react files into a bundle)
+    2. npm watch-client (webpacks react files into a bundle)
+    3. npm run build (transpiles server files from ES6 to ES5)
     4. Run Server:
         npm run test (local server)
                 or
