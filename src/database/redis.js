@@ -14,6 +14,8 @@ storage.on('error', (err) => {
   console.log('Error:', err);
 });
 
+storage.set('LastIndex', 0);
+
 module.exports = storage;
 
 // delete all values from all db's --> storage.flushdbAsync()
