@@ -29,7 +29,7 @@ View Queue and Existing Job Table and associated URL:
 
     curl http://198.199.101.94:3000/queue
 
-Change Worker Interval:
+Change Worker Interval (Default is 5000 ms):
 
     Example Change Interval to 1 Minute:
     curl --data "ms=60000" http://198.199.101.94:3000
