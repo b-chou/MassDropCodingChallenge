@@ -1,6 +1,8 @@
-const controller = require('./controller.js');
+'use strict';
 
-module.exports = app => {
+var controller = require('./controller.js');
+
+module.exports = function (app) {
   // get html based off job #
   app.get('/:id', controller.serveJob);
   // add to queue of websites to archive
