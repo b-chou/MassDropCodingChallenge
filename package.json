@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "nodemon src/server/server.js",
-    "build": "babel src/server -d dev",
+    "build": "babel src/server -d dev/server && cp src/server/index.html dev/server",
     "watch-client": "webpack --watch --progress"
   },
   "repository": {
