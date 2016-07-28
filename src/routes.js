@@ -1,12 +1,11 @@
-const workerController = require('./workerController.js');
-const dbController = require('./dbController.js');
+const controller = require('./controller.js');
 
 module.exports = app => {
   app.route('/site')
-    .get(dbController.getSiteHTML)
-    .post(dbController.queueSite);
+    .get(controller.serveSite)
+    .post(controller.queueSite);
 
   app.route('/*')
-    .get(workerController.getQueue)
-    .post(workerController.changeSchedule);
+    .get(controller.getQueue)
+    .post(controller.changeSchedule);
 };
