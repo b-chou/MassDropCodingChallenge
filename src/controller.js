@@ -1,12 +1,13 @@
 const workQueue = [];
 const request = require('request');
 const storage = require('./database/redis');
+let workerInterval = 5000;
 
 // gets html from target url, dequeues from the work queue
 const getSiteHTML = (req, res) => {
-  if (workQueue) {
+  if (workQueue.length) {
     const currentUrl = workQueue.shift();
-    console.log(workQueue, '****');
+    console.log(`Currently Archiving: ${currentUrl}`);
     request(currentUrl, (error, response, body) => {
       if (error) {
         res.status(400).send({ error: 'invalid url or failed to request html' });
@@ -16,6 +17,11 @@ const getSiteHTML = (req, res) => {
     });
   }
 };
+
+let intervalRef = setInterval(() => {
+  getSiteHTML();
+  console.log(`Worker grabbing data every ${workerInterval}ms.`);
+}, workerInterval);
 
 module.exports = {
   // serves the html of a given site, must be in query format
@@ -28,7 +34,11 @@ module.exports = {
       if (html) {
         res.send(html);
       } else {
-        res.status(400).send({ error: `html not found for ${req.query.url}` });
+        if (workQueue.indexOf(requestUrl) === -1) {
+          res.status(400).send({ error: `${requestUrl} is not in the work queue and HTML is was not archived.` });
+        } else {
+          res.status(400).send({ error: `${requestUrl} is in the queue at spot ${workQueue.indexOf(requestUrl) + 1}.` });
+        }
       }
     });
   },
@@ -42,7 +52,7 @@ module.exports = {
       } else {
         workQueue.push(req.body.url);
       }
-      res.sendStatus(300);
+      res.status(300).send({ message: `Queued up! ${workQueue.length - 1} jobs ahead of yours` });
     } else {
       res.status(400).send({ error: `${req.body.url} was an invalid url` });
     }
@@ -51,12 +61,16 @@ module.exports = {
   // returns the current queue
   getQueue: (req, res) => {
     res.send({ queue: workQueue });
-    getSiteHTML();
-    console.log(workQueue);
   },
 
   // changes the cron job schedule of how often a url html is saved
   changeSchedule: (req, res) => {
-    console.log('wuhhhhh');
+    clearInterval(intervalRef);
+    workerInterval = req.body.ms;
+    intervalRef = setInterval(() => {
+      getSiteHTML();
+      console.log(`logging at ${workerInterval}`);
+    }, workerInterval);
+    res.send(`new worker interval: ${workerInterval}`);
   },
 };
