@@ -9,7 +9,7 @@ Navigate to 198.199.101.94:3000 for a UI and additional instructions
     2. npm watch-client (webpacks react files into a bundle)
     3. npm run build (transpiles server files from ES6 to ES5)
     4. Run Server:
-        npm run test (local server)
+        npm test (local server)
                 or
         forever start dev/server/server.js 
 
@@ -23,7 +23,7 @@ To add a website to the worker's queue:
 To access a website based off of job number
 
     Example Job #1:
-    curl http://198.199.101.94:3000/1
+    Navigate to http://198.199.101.94:3000/1 in browser
 
 View Queue and Existing Job Table and associated URL: 
 
